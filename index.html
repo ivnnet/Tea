@@ -13,10 +13,13 @@
     Tea Time Alarm - Official UK Government Notification
 </header>
 
-<!-- Countdown Timer at the Top -->
+<!-- Countdown Timer at the Top with Progress Bar -->
 <div class="timer-container">
     <h2>Next Tea Time</h2>
     <div id="countdown" class="countdown"></div>
+    <div id="countdown-progress" class="progress-bar">
+        <div id="progress-bar-fill"></div>
+    </div>
 </div>
 
 <div class="container">
@@ -41,10 +44,28 @@
     </section>
 
     <section class="section">
+        <h2>Tea Time History</h2>
+        <p>Here's a record of your past tea times and whether you participated:</p>
+        <ul id="teaHistory">
+            <!-- Tea time history will be dynamically added here -->
+        </ul>
+    </section>
+
+    <section class="section">
         <h2>Take the Tea Pledge</h2>
         <p>Do you promise to drink tea at the scheduled times?</p>
         <button class="button" onclick="acceptPledge()">I Pledge to Drink Tea</button>
         <p id="pledgeResponse"></p>
+    </section>
+
+    <section class="section">
+        <h2>Contact Us</h2>
+        <p>Have questions or feedback? Reach out to us.</p>
+        <form id="contactForm" onsubmit="sendContactForm(event)">
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="button">Send Message</button>
+        </form>
     </section>
 
     <section class="section">
