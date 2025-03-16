@@ -1,54 +1,4 @@
-// Handle the form submission
-document.getElementById("contactForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the form from reloading the page
-    
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-    const responseMessage = document.getElementById("contactResponse");
-    const button = document.querySelector("button[type='submit']");
-    
-    // Basic validation
-    if (email === "" || message === "") {
-        responseMessage.innerText = "Please fill in all fields.";
-        responseMessage.style.color = "red";
-        return;
-    }
-    
-    // Show loading spinner
-    button.innerHTML = "Sending...";
-    button.disabled = true; // Disable the button to prevent multiple submissions
-
-    // Create FormData object
-    const formData = new FormData();
-    formData.append("email", email);
-    formData.append("message", message);
-
-    // Use Fetch API to send the form data to Formspree
-    fetch("https://formspree.io/f/mldjdnay", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => {
-        if (response.ok) {
-            responseMessage.innerText = "Your message has been sent successfully!";
-            responseMessage.style.color = "green";
-            document.getElementById("contactForm").reset(); // Reset form fields
-        } else {
-            responseMessage.innerText = "There was an error sending your message. Please try again.";
-            responseMessage.style.color = "red";
-        }
-    })
-    .catch(error => {
-        responseMessage.innerText = "Error: Unable to send message. Please try again later.";
-        responseMessage.style.color = "red";
-    })
-    .finally(() => {
-        button.innerHTML = "Send Message"; // Reset the button text
-        button.disabled = false; // Re-enable the button
-    });
-});
-
-// Countdown Timer & Progress Bar
+// Countdown and Progress Bar
 function getNextTeaTime() {
     const now = new Date();
     now.setSeconds(0);
@@ -77,4 +27,67 @@ function getNextTeaTime() {
 }
 
 // Update countdown and progress bar
-function
+function updateCountdown() {
+    const nextTeaTime = getNextTeaTime();
+    const now = new Date();
+    const timeLeft = nextTeaTime - now;
+
+    if (timeLeft > 0) {
+        const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        document.getElementById("countdown").innerText = `${hours}h ${minutes}m ${seconds}s`;
+
+        // Update Progress Bar
+        const totalTeaTime = new Date(nextTeaTime - now);
+        const percentage = (timeLeft / totalTeaTime) * 100;
+        document.getElementById("progress").style.width = `${percentage}%`;
+    } else {
+        sendTeaNotification();
+    }
+}
+
+// Live tea counter
+let teaCounter = 0;
+function updateTeaCounter() {
+    teaCounter++;
+    document.getElementById("teaCounter").innerText = `Tea is being brewed... Total cups brewed: ${teaCounter}`;
+}
+
+// Pledge to Drink Tea
+document.getElementById("pledgeButton").addEventListener("click", function () {
+    document.getElementById("pledgeResponse").classList.remove("hidden-text");
+    document.getElementById("pledgeResponse").innerText = "Thank you for pledging to drink tea!";
+});
+
+// FAQ Toggle
+function toggleFAQ(index) {
+    const answer = document.getElementById(`faq-answer-${index}`);
+    answer.style.display = answer.style.display === "none" ? "block" : "none";
+}
+
+// Contact Form Submission Response
+document.getElementById("contactForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    document.getElementById("contactResponse").innerText = "Your message has been sent successfully!";
+});
+
+// Staff Login
+function staffLogin() {
+    const password = document.getElementById("staffPassword").value;
+    if (password === "admin123") {
+        document.getElementById("staffPanel").classList.remove("hidden-text");
+        alert("Staff Login Successful");
+    } else {
+        alert("Incorrect password. Please try again.");
+    }
+}
+
+// Send Test Notification (for staff only)
+function sendTestNotification() {
+    alert("Test notification sent to all users with notifications enabled.");
+}
+
+// Initialize countdown update every second
+setInterval(updateCountdown, 1000);
+setInterval(updateTeaCounter, 3000);  // Update every 3 seconds for live counter
