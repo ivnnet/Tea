@@ -56,11 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateCountdown, 1000);
 });
 
-// Tea Time Pledge
-function acceptPledge() {
-    document.getElementById("pledgeResponse").innerText = "You are now officially a Tea Time participant.";
-}
-
 // Staff Login Function with Test Notification on Login
 let isStaffLoggedIn = false;
 
