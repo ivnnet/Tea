@@ -1,27 +1,59 @@
+/* Global Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
 }
 
 header {
-    background-color: #333;
+    background-color: #004080;
     color: white;
-    text-align: center;
+    padding: 15px;
+    font-size: 24px;
+}
+
+.container {
     padding: 20px;
 }
 
-.timer-container {
-    background-color: white;
+.section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: white;
     border-radius: 8px;
-    margin: 20px;
-    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+    background: #0073e6;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.hidden-text {
+    display: none;
+    margin-top: 10px;
 }
 
 .countdown {
-    font-size: 2em;
+    font-size: 24px;
     font-weight: bold;
+    color: #cc0000;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    padding: 10px;
+}
+
+/* Countdown and Progress Bar */
+.timer-container {
+    margin-top: 30px;
 }
 
 .progress-bar {
@@ -39,45 +71,18 @@ header {
     border-radius: 5px;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-.hidden-text {
-    display: none;
-}
-
-.response-message {
+.qa {
     margin-top: 10px;
-    font-size: 1.2em;
 }
 
-.faq-question {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
+.qa .question {
+    font-weight: bold;
 }
 
-.faq-answer {
+.qa .answer {
+    margin-left: 20px;
+}
+
+#staffSection {
     display: none;
-    background-color: #f9f9f9;
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-
-.faq-question:hover {
-    background-color: #45a049;
 }
