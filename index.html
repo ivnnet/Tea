@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official Government Website - Tea Time Alarm">
+    <title>Tea Time Alarm</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Linking external CSS -->
+</head>
+<body>
+
+<header>
+    Tea Time Alarm - Official UK Government Notification
+</header>
+
+<div class="container">
+    <section class="section">
+        <h2>What is the Tea Time Alarm?</h2>
+        <p>The Tea Time Alarm is a mandatory daily reminder for all citizens to pause their activities and have their tea at the scheduled times: 10 AM, 3 PM, and 7 PM. Missing these times can lead to heavy fines or, in extreme cases, jail time. The government takes the tradition of tea time very seriously!</p>
+        
+        <button class="button" onclick="toggleVisibility('teaTimeDetails')">Learn More About Tea Time</button>
+        <div id="teaTimeDetails" class="hidden-text">
+            <p>The Tea Time Alarm was introduced to ensure that every citizen has the opportunity to enjoy their tea breaks on time. This ritual is deeply embedded in the culture of the UK and has been an essential part of daily life for centuries. Failure to comply with the alarm could lead to fines or imprisonment. The law strictly enforces participation, especially in public spaces.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Tea Times</h2>
+        <p>The official tea times are:</p>
+        <ul>
+            <li>10:00 AM</li>
+            <li>3:00 PM</li>
+            <li>7:00 PM</li>
+        </ul>
+
+        <div class="countdown" id="countdown"></div>
+    </section>
+
+    <section class="section">
+        <h2>History of the Tea Time Alarm</h2>
+        <p>The tradition of tea time dates back centuries in the UK, with its origins in the early 1800s. The Tea Time Alarm was introduced as a way to preserve the tradition and ensure that every citizen has the opportunity to enjoy their tea breaks on time. It became a legal requirement in 1924 and has been enforced ever since to ensure national harmony and health.</p>
+        
+        <button class="button" onclick="toggleVisibility('historyDetails')">More History</button>
+        <div id="historyDetails" class="hidden-text">
+            <p>In the 1920s, a national Tea Time policy was implemented to ensure that all citizens, regardless of their class or status, had a moment to relax and refresh. The alarm became a mandatory part of the day in the UK, contributing to the nation's health and well-being. The ritual remains intact today, representing both tradition and law.</p>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>Tea Time Alarm - A UK Government Initiative. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script> <!-- Linking external JavaScript -->
+</body>
+</html>
