@@ -76,7 +76,7 @@ function staffLogin() {
     }
 }
 
-// Show Test Notification button after staff login
+// Hide notification section by default
 document.getElementById("sendNotificationSection").style.display = "none"; // Initially hide it
 
 // Request Notification Permission
