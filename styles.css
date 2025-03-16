@@ -1,5 +1,5 @@
 body {
-    font-family: "Georgia", serif;
+    font-family: "Arial", sans-serif; /* A more mobile-friendly font */
     text-align: center;
     background-color: #f4f4f4;
     margin: 0;
@@ -40,7 +40,7 @@ ul li {
     font-size: 18px;
 }
 
-.button {
+button {
     background: #1d70b8;
     color: white;
     padding: 14px 25px;
@@ -53,7 +53,7 @@ ul li {
     max-width: 300px;
 }
 
-.button:hover {
+button:hover {
     background: #0a5396;
 }
 
@@ -110,4 +110,19 @@ input, textarea {
 
 textarea {
     height: 150px;
+}
+
+.faq {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.faq h3 {
+    font-size: 20px;
+    margin: 15px 0 5px;
+}
+
+.faq p {
+    font-size: 18px;
+    margin-bottom: 15px;
 }
