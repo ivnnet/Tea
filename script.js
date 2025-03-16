@@ -61,15 +61,23 @@ function acceptPledge() {
     document.getElementById("pledgeResponse").innerText = "You are now officially a Tea Time participant.";
 }
 
-// Staff Login Function
+// Staff Login Function with Test Notification on Login
+let isStaffLoggedIn = false;
+
 function staffLogin() {
     const password = document.getElementById("staffPassword").value;
     if (password === "admin123") {
-        document.getElementById("staffSection").style.display = "block";
+        isStaffLoggedIn = true; // Mark staff as logged in
+        document.getElementById("staffSection").style.display = "none"; // Hide login
+        document.getElementById("sendNotificationSection").style.display = "block"; // Show notification test button
+        alert("Logged in successfully!");
     } else {
         alert("Incorrect password!");
     }
 }
+
+// Show Test Notification button after staff login
+document.getElementById("sendNotificationSection").style.display = "none"; // Initially hide it
 
 // Request Notification Permission
 function requestNotificationPermission() {
@@ -84,12 +92,16 @@ function requestNotificationPermission() {
 
 // Send Test Notification
 function sendTestNotification() {
-    if (Notification.permission === "granted") {
-        new Notification("Tea Time Alarm - Test", {
-            body: "This is a test notification for Tea Time.",
-            icon: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Tea_cup_icon.svg"
-        });
+    if (isStaffLoggedIn) {
+        if (Notification.permission === "granted") {
+            new Notification("Tea Time Alarm - Test", {
+                body: "This is a test notification for Tea Time.",
+                icon: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Tea_cup_icon.svg"
+            });
+        } else {
+            requestNotificationPermission();
+        }
     } else {
-        requestNotificationPermission();
+        alert("Please log in first to send notifications.");
     }
 }
