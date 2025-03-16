@@ -88,6 +88,19 @@ function acceptPledge() {
     document.getElementById("pledgeResponse").innerText = "You are now officially a Tea Time participant.";
 }
 
+// Send Contact Form
+function sendContactForm(event) {
+    event.preventDefault(); // Prevent page refresh
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    if (email && message) {
+        document.getElementById("contactResponse").innerText = "Your message has been sent. Thank you!";
+    } else {
+        document.getElementById("contactResponse").innerText = "Please fill in all fields.";
+    }
+}
+
 // Staff Login Function
 function staffLogin() {
     const password = document.getElementById("staffPassword").value;
@@ -106,4 +119,12 @@ function sendTestNotification() {
             icon: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Tea_cup_icon.svg"
         });
     } else {
-        alert("Notifications
+        alert("Notifications are not enabled.");
+    }
+}
+
+// Initialize
+updateCountdown();
+setInterval(updateCountdown, 1000);
+updateTeaCounter();
+updateTeaHistory();
