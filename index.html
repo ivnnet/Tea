@@ -36,8 +36,14 @@
         <div class="section">
             <h3>Rules</h3>
             <p>All UK citizens must drink tea at 10 AM, 3 PM, and 7 PM daily. Failure to comply results in a £50 fine for the first offense, a £200 fine and a mandatory tea education course for the second offense, and up to 3 months in jail for the third offense. Notifications must be enabled, and participation is legally required.</p>
-            <button class="button" onclick="I accept()">Accept</button>
-            <p id="pledgeResponse" class="hidden-text"></p>
+            <button onclick="showText()">I agree</button>
+<p id="displayText" style="display: none;">You have successfully registered to the Tea Time alarm from the UK Government</p>
+
+<script>
+    function showText() {
+        document.getElementById("displayText").style.display = "block";
+    }
+</script>
         </div>
 
         <!-- Q&A Section -->
