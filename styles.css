@@ -48,7 +48,11 @@ button:hover {
     color: #cc0000;
 }
 
-/* Progress Bar Styles */
+.tea-counter {
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .progress-bar {
     width: 100%;
     height: 10px;
@@ -64,7 +68,6 @@ button:hover {
     border-radius: 5px;
 }
 
-/* FAQ Section */
 .faq {
     margin-top: 20px;
     text-align: left;
@@ -92,7 +95,6 @@ button:hover {
     display: none;
 }
 
-/* Contact Form Response Styling */
 .response-message {
     font-size: 1rem;
     margin-top: 1rem;
@@ -102,7 +104,6 @@ button:hover {
     transition: opacity 0.5s ease-in-out;
 }
 
-/* Input Fields */
 input[type="email"], textarea {
     width: 100%;
     padding: 10px;
@@ -115,7 +116,6 @@ input[type="email"]:focus, textarea:focus {
     border-color: #007BFF;
 }
 
-/* Button Styling */
 button[type="submit"] {
     padding: 10px 20px;
     background-color: #007BFF;
@@ -130,7 +130,6 @@ button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* Loading Spinner Style */
 button[type="submit"]:disabled {
     background-color: #ccc;
     cursor: not-allowed;
