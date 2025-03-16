@@ -1,60 +1,40 @@
+/* Global Styles */
 body {
-    font-family: "Arial", sans-serif; /* A more mobile-friendly font */
+    font-family: Arial, sans-serif;
     text-align: center;
     background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
 }
 
 header {
-    background-color: #005ea5;
+    background-color: #004080;
     color: white;
-    padding: 30px 20px;
-    font-size: 30px;
-    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 24px;
 }
 
 .container {
-    padding: 30px;
+    padding: 20px;
 }
 
 .section {
-    margin-bottom: 30px;
-    padding: 25px;
+    margin-bottom: 20px;
+    padding: 15px;
     background: white;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    font-size: 26px;
-    margin-bottom: 15px;
-}
-
-ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-ul li {
-    font-size: 18px;
-}
-
 button {
-    background: #1d70b8;
+    padding: 10px 20px;
+    background-color: #0073e6;
     color: white;
-    padding: 14px 25px;
     border: none;
     cursor: pointer;
-    margin-top: 20px;
     border-radius: 5px;
-    font-size: 18px;
-    width: 100%;
-    max-width: 300px;
 }
 
 button:hover {
-    background: #0a5396;
+    background-color: #005bb5;
 }
 
 .hidden-text {
@@ -63,66 +43,95 @@ button:hover {
 }
 
 .countdown {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     color: #cc0000;
-    margin-bottom: 20px;
 }
 
+/* Progress Bar Styles */
 .progress-bar {
     width: 100%;
     height: 10px;
-    background-color: #e6e6e6;
+    background-color: #e0e0e0;
+    margin-top: 10px;
     border-radius: 5px;
 }
 
-#progress-bar-fill {
+.progress {
+    width: 0%;
     height: 100%;
     background-color: #0073e6;
-    width: 0;
     border-radius: 5px;
 }
 
-footer {
-    background-color: #222;
-    color: white;
-    padding: 15px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-input, textarea {
-    width: 80%;
-    max-width: 400px;
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-textarea {
-    height: 150px;
-}
-
+/* FAQ Section */
 .faq {
+    margin-top: 20px;
     text-align: left;
-    margin-top: 10px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.faq h3 {
-    font-size: 20px;
-    margin: 15px 0 5px;
+.faq-question {
+    width: 100%;
+    padding: 10px;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 5px;
 }
 
-.faq p {
-    font-size: 18px;
-    margin-bottom: 15px;
+.faq-answer {
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    display: none;
+}
+
+/* Contact Form Response Styling */
+.response-message {
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    display: inline-block;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Input Fields */
+input[type="email"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+input[type="email"]:focus, textarea:focus {
+    border-color: #007BFF;
+}
+
+/* Button Styling */
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Loading Spinner Style */
+button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
