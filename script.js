@@ -26,8 +26,8 @@ function getNextTeaTime() {
     }
 
     let nextTeaTime = new Date();
-    nextTeaTime.setDate(now.getDate() + 1);
-    nextTeaTime.setHours(teaTimes[0].hour, teaTimes[0].minute, 0);
+    nextTeaTime.setDate(now.getDate() + 1); // Set to the next day
+    nextTeaTime.setHours(teaTimes[0].hour, teaTimes[0].minute, 0); // First tea time of the next day
 
     return nextTeaTime;
 }
@@ -92,5 +92,5 @@ function sendTestNotification() {
 }
 
 // Run updates
-setInterval(updateCountdown, 1000);
-setInterval(updateTeaCounter, 5000);
+setInterval(updateCountdown, 1000); // Update countdown every second
+setInterval(updateTeaCounter, 5000); // Update tea counter every 5 seconds
