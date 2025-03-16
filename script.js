@@ -1,9 +1,10 @@
-// Countdown and Progress Bar
+// Tea time countdown logic
 function getNextTeaTime() {
     const now = new Date();
     now.setSeconds(0);
     now.setMilliseconds(0);
 
+    // Tea times: 10 AM, 3 PM, 7 PM
     const teaTimes = [
         { hour: 10, minute: 0 },
         { hour: 15, minute: 0 },
@@ -27,12 +28,12 @@ function getNextTeaTime() {
         upcomingTimes.push(nextTeaTime);
     }
 
-    return upcomingTimes;
+    return upcomingTimes[0];  // Return the first upcoming tea time
 }
 
-// Update countdown and progress bar
+// Update the countdown and progress bar
 function updateCountdown() {
-    const nextTeaTime = getNextTeaTime()[0];  // Get the first upcoming tea time
+    const nextTeaTime = getNextTeaTime();
     const now = new Date();
     const timeLeft = nextTeaTime - now;
 
@@ -40,97 +41,62 @@ function updateCountdown() {
         const hours = Math.floor(timeLeft / (1000 * 60 * 60));
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        // Update the countdown text
         document.getElementById("countdown").innerText = `${hours}h ${minutes}m ${seconds}s`;
 
-        // Update Progress Bar
-        const totalTeaTime = new Date(nextTeaTime - now);
-        const percentage = (timeLeft / totalTeaTime) * 100;
-        document.getElementById("progress").style.width = `${percentage}%`;
+        // Calculate the percentage of the progress bar
+        const totalTeaTime = new Date(nextTeaTime - now); // Time left until the next tea time
+        const percentage = (timeLeft / totalTeaTime) * 100;  // Progress bar calculation
+        document.getElementById("progress").style.width = `${percentage}%`;  // Update the progress bar
 
-        // Update upcoming tea times list
-        updateTeaTimesList();
-
-        // Play Alarm when close to tea time
-        if (timeLeft < 60000) { // 1 minute before tea time
-            playAlarm();
-        }
     } else {
-        sendTeaNotification();
+        // Notify when tea time arrives
+        document.getElementById("countdown").innerText = "Tea Time Now!";
+        document.getElementById("progress").style.width = "100%";
     }
 }
 
-// Function to update the upcoming tea times list
-function updateTeaTimesList() {
-    const upcomingTimes = getNextTeaTime();
-    const teaTimesList = document.getElementById('teaTimesList');
-    teaTimesList.innerHTML = '';  // Clear the current list
+// Update the countdown every second
+document.addEventListener("DOMContentLoaded", () => {
+    updateCountdown();
+    setInterval(updateCountdown, 1000);  // Update countdown every 1 second
+});
 
-    upcomingTimes.forEach(teaTime => {
-        const teaTimeItem = document.createElement('li');
-        teaTimeItem.textContent = `Tea Time: ${teaTime.getHours()}:${teaTime.getMinutes() < 10 ? '0' : ''}${teaTime.getMinutes()}`;
-        teaTimesList.appendChild(teaTimeItem);
-    });
+// Tea Time Pledge
+function acceptPledge() {
+    document.getElementById("pledgeResponse").innerText = "You are now officially a Tea Time participant.";
 }
 
-// Tea Facts Section
-const teaFacts = [
-    "Tea was introduced to Britain in the 17th century and became an integral part of British culture.",
-    "The average British person drinks 2.5 cups of tea a day.",
-    "Drinking tea can improve your mood and increase mental alertness.",
-    "Black tea is the most commonly consumed tea in the UK, followed by green tea."
-];
-
-// Display a random tea fact
-function displayRandomTeaFact() {
-    const randomFact = teaFacts[Math.floor(Math.random() * teaFacts.length)];
-    document.getElementById('teaFact').innerText = randomFact;
+// Staff Login Function
+function staffLogin() {
+    const password = document.getElementById("staffPassword").value;
+    if (password === "admin123") { // Replace with a more secure password system if needed
+        document.getElementById("staffSection").style.display = "block";
+    } else {
+        alert("Incorrect password!");
+    }
 }
 
-// Tea Notification System
-function sendTeaNotification() {
-    if (Notification.permission === "granted") {
-        new Notification("Tea Time is now!", {
-            body: "It's time for tea! Please prepare your cup.",
-            icon: "tea-icon.png"
-        });
-    } else if (Notification.permission !== "denied") {
-        Notification.requestPermission().then(function(permission) {
+// Request Notification Permission
+function requestNotificationPermission() {
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission().then(permission => {
             if (permission === "granted") {
-                new Notification("Tea Time is now!", {
-                    body: "It's time for tea! Please prepare your cup.",
-                    icon: "tea-icon.png"
-                });
+                alert("You can now receive notifications.");
             }
         });
     }
 }
 
-// Request notification permission on page load
-if (Notification.permission !== "denied") {
-    Notification.requestPermission();
-}
-
-// Trigger test notification for staff
+// Send Test Notification (For Staff)
 function sendTestNotification() {
-    new Notification("Test Notification", {
-        body: "This is a test notification to confirm the system is working.",
-        icon: "test-icon.png"
-    });
-}
-
-// Staff login functionality
-function staffLogin() {
-    const password = document.getElementById('staffPassword').value;
-    if (password === 'staffpassword') {
-        document.getElementById('staffPanel').classList.remove('hidden-text');
-        alert("Welcome to the staff panel!");
+    if (Notification.permission === "granted") {
+        new Notification("Tea Time Alarm - Test", {
+            body: "This is a test notification for Tea Time.",
+            icon: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Tea_cup_icon.svg"
+        });
     } else {
-        alert("Incorrect password.");
+        requestNotificationPermission();
     }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    displayRandomTeaFact();
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-});
