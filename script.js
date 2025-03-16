@@ -4,7 +4,6 @@ function getNextTeaTime() {
     now.setSeconds(0);
     now.setMilliseconds(0);
 
-    // Tea times: 10 AM, 3 PM, 7 PM
     const teaTimes = [
         { hour: 10, minute: 0 },
         { hour: 15, minute: 0 },
@@ -28,10 +27,9 @@ function getNextTeaTime() {
         upcomingTimes.push(nextTeaTime);
     }
 
-    return upcomingTimes[0];  // Return the first upcoming tea time
+    return upcomingTimes[0];
 }
 
-// Update the countdown and progress bar
 function updateCountdown() {
     const nextTeaTime = getNextTeaTime();
     const now = new Date();
@@ -42,25 +40,20 @@ function updateCountdown() {
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-        // Update the countdown text
         document.getElementById("countdown").innerText = `${hours}h ${minutes}m ${seconds}s`;
 
-        // Calculate the percentage of the progress bar
-        const totalTeaTime = new Date(nextTeaTime - now); // Time left until the next tea time
-        const percentage = (timeLeft / totalTeaTime) * 100;  // Progress bar calculation
-        document.getElementById("progress").style.width = `${percentage}%`;  // Update the progress bar
-
+        const totalTeaTime = new Date(nextTeaTime - now);
+        const percentage = (timeLeft / totalTeaTime) * 100;
+        document.getElementById("progress").style.width = `${percentage}%`;
     } else {
-        // Notify when tea time arrives
         document.getElementById("countdown").innerText = "Tea Time Now!";
         document.getElementById("progress").style.width = "100%";
     }
 }
 
-// Update the countdown every second
 document.addEventListener("DOMContentLoaded", () => {
     updateCountdown();
-    setInterval(updateCountdown, 1000);  // Update countdown every 1 second
+    setInterval(updateCountdown, 1000);
 });
 
 // Tea Time Pledge
@@ -71,7 +64,7 @@ function acceptPledge() {
 // Staff Login Function
 function staffLogin() {
     const password = document.getElementById("staffPassword").value;
-    if (password === "admin123") { // Replace with a more secure password system if needed
+    if (password === "admin123") {
         document.getElementById("staffSection").style.display = "block";
     } else {
         alert("Incorrect password!");
@@ -89,7 +82,7 @@ function requestNotificationPermission() {
     }
 }
 
-// Send Test Notification (For Staff)
+// Send Test Notification
 function sendTestNotification() {
     if (Notification.permission === "granted") {
         new Notification("Tea Time Alarm - Test", {
