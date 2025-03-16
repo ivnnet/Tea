@@ -68,7 +68,7 @@ function staffLogin() {
     const password = document.getElementById("staffPassword").value;
     if (password === "admin123") {
         isStaffLoggedIn = true; // Mark staff as logged in
-        document.getElementById("staffSection").style.display = "none"; // Hide login
+        document.getElementById("staffSection").style.display = "none"; // Hide login section
         document.getElementById("sendNotificationSection").style.display = "block"; // Show notification test button
         alert("Logged in successfully!");
     } else {
@@ -79,7 +79,7 @@ function staffLogin() {
 // Hide notification section by default
 document.getElementById("sendNotificationSection").style.display = "none"; // Initially hide it
 
-// Request Notification Permission
+// Request Notification Permission on page load
 function requestNotificationPermission() {
     if (Notification.permission !== "granted") {
         Notification.requestPermission().then(permission => {
@@ -89,6 +89,9 @@ function requestNotificationPermission() {
         });
     }
 }
+
+// Request Notification Permission when the page loads
+document.addEventListener("DOMContentLoaded", requestNotificationPermission);
 
 // Send Test Notification
 function sendTestNotification() {
@@ -105,3 +108,7 @@ function sendTestNotification() {
         alert("Please log in first to send notifications.");
     }
 }
+
+// Adding event listeners to buttons to prevent them from appearing unless conditions are met
+document.getElementById("loginButton").addEventListener("click", staffLogin);
+document.getElementById("testNotificationButton").addEventListener("click", sendTestNotification);
