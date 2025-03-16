@@ -13,52 +13,68 @@
     Tea Time Alarm - Official UK Government Notification
 </header>
 
-<!-- Countdown Timer at the Top -->
+<!-- Countdown Timer and Live Tea Counter -->
 <div class="timer-container">
     <h2>Next Tea Time</h2>
     <div id="countdown" class="countdown"></div>
     <div id="progressBar" class="progress-bar">
         <div id="progress" class="progress"></div>
     </div>
+    <h3>Live Tea Counter</h3>
+    <div id="teaCounter" class="tea-counter"></div>
 </div>
 
-<div class="container">
+<!-- Tea Pledge Section -->
+<section class="section">
+    <h2>Tea Pledge</h2>
+    <button id="pledgeButton" class="button">Pledge to Drink Tea</button>
+    <p id="pledgeResponse" class="response-message hidden-text"></p>
+</section>
 
-    <!-- FAQ Section -->
-    <section class="section">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq">
-            <button class="faq-question" onclick="toggleFAQ(0)">What is the Tea Time Alarm?</button>
-            <div class="faq-answer" id="faq-answer-0">
-                <p>The Tea Time Alarm is a mandatory daily reminder for all UK citizens to drink tea at the scheduled times: 10 AM, 3 PM, and 7 PM. Failure to participate can result in fines or even jail time.</p>
-            </div>
-
-            <button class="faq-question" onclick="toggleFAQ(1)">What happens if I miss tea time?</button>
-            <div class="faq-answer" id="faq-answer-1">
-                <p>If you miss a tea time, penalties may apply. The first offense results in a £50 fine, the second offense in a £200 fine, and three offenses may lead to jail time.</p>
-            </div>
-
-            <button class="faq-question" onclick="toggleFAQ(2)">How do I pledge to drink tea?</button>
-            <div class="faq-answer" id="faq-answer-2">
-                <p>Simply visit our website and accept the pledge to commit to drinking tea at the scheduled times.</p>
-            </div>
+<!-- FAQ Section -->
+<section class="section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+        <button class="faq-question" onclick="toggleFAQ(0)">What is the Tea Time Alarm?</button>
+        <div class="faq-answer" id="faq-answer-0">
+            <p>The Tea Time Alarm is a mandatory daily reminder for all UK citizens to drink tea at the scheduled times: 10 AM, 3 PM, and 7 PM. Failure to participate can result in fines or even jail time.</p>
         </div>
-    </section>
 
-    <!-- Contact Us Section -->
-    <section class="section">
-        <h2>Contact Us</h2>
-        <p>Have questions or feedback? Reach out to us.</p>
-        <!-- Form that sends messages via Formspree -->
-        <form id="contactForm" action="https://formspree.io/f/mldjdnay" method="POST" class="contact-form">
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-            <button type="submit" class="button">Send Message</button>
-        </form>
-        <p id="contactResponse" class="response-message"></p>
-    </section>
+        <button class="faq-question" onclick="toggleFAQ(1)">What happens if I miss tea time?</button>
+        <div class="faq-answer" id="faq-answer-1">
+            <p>If you miss a tea time, penalties may apply. The first offense results in a £50 fine, the second offense in a £200 fine, and three offenses may lead to jail time.</p>
+        </div>
 
-</div>
+        <button class="faq-question" onclick="toggleFAQ(2)">How do I pledge to drink tea?</button>
+        <div class="faq-answer" id="faq-answer-2">
+            <p>Simply visit our website and accept the pledge to commit to drinking tea at the scheduled times.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Us Section -->
+<section class="section">
+    <h2>Contact Us</h2>
+    <p>Have questions or feedback? Reach out to us.</p>
+    <!-- Form that sends messages via Formspree -->
+    <form id="contactForm" action="https://formspree.io/f/mldjdnay" method="POST" class="contact-form">
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="button">Send Message</button>
+    </form>
+    <p id="contactResponse" class="response-message"></p>
+</section>
+
+<!-- Staff Login Section -->
+<section class="section">
+    <h2>Staff Login</h2>
+    <input type="password" id="staffPassword" placeholder="Enter Password" />
+    <button class="button" onclick="staffLogin()">Login</button>
+    <div id="staffPanel" class="hidden-text">
+        <h3>Staff Control Panel</h3>
+        <button onclick="sendTestNotification()" class="button">Send Test Notification</button>
+    </div>
+</section>
 
 <footer>
     <p>Tea Time Alarm - A UK Government Initiative. All Rights Reserved.</p>
