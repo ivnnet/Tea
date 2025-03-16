@@ -3,96 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official Government Website - Tea Time Alarm">
     <title>Tea Time Alarm</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Tea Time Alarm UK GOV</h1>
+        <p>Government Tea Time Alarm</p>
+    </header>
 
-<header>
-    Tea Time Alarm - Official UK Government Notification
-</header>
+    <div class="container">
+        <!-- Countdown and Progress Bar -->
+        <div class="timer-container">
+            <h2>Next Tea Time</h2>
+            <div id="countdown" class="countdown"></div>  <!-- Countdown display -->
+            <div id="progressBar" class="progress-bar">
+                <div id="progress" class="progress"></div> <!-- Progress bar -->
+            </div>
+        </div>
 
-<!-- Countdown Timer at the Top -->
-<div class="timer-container">
-    <h2>Next Tea Time</h2>
-    <div id="countdown" class="countdown"></div>
-    <div id="progressBarContainer" class="progress-bar-container">
-        <div id="progressBar" class="progress-bar"></div>
+        <!-- Upcoming Tea Times -->
+        <div class="section">
+            <h3>Upcoming Tea Times:</h3>
+            <ul id="teaTimesList">
+                <li>10:00 AM</li>
+                <li>3:00 PM</li>
+                <li>7:00 PM</li>
+            </ul>
+        </div>
+
+        <!-- Tea Time Pledge -->
+        <div class="section">
+            <h3>Rules</h3>
+            <p>All UK citizens must drink tea at 10 AM, 3 PM, and 7 PM daily. Failure to comply results in a £50 fine for the first offense, a £200 fine and a mandatory tea education course for the second offense, and up to 3 months in jail for the third offense. Notifications must be enabled, and participation is legally required.</p>
+            <button class="button" onclick="I accept()">Accept</button>
+            <p id="pledgeResponse" class="hidden-text"></p>
+        </div>
+
+        <!-- Q&A Section -->
+        <div class="section">
+            <h3>Frequently Asked Questions</h3>
+            <div class="qa">
+                <div class="question">What is Tea Time?</div>
+                <div class="answer">Tea Time is a cherished tradition where we take a break and enjoy a cup of tea.</div>
+            </div>
+            <div class="qa">
+                <div class="question">When is the next Tea Time?</div>
+                <div class="answer">Check the countdown above to know when the next Tea Time is!</div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="section">
+            <h3>Contact Us</h3>
+            <form action="https://formspree.io/f/mldjdnay" method="POST" id="contactForm">
+                <input type="email" name="email" placeholder="Your email" required><br><br>
+                <textarea name="message" rows="4" placeholder="Your message..." required></textarea><br><br>
+                <button type="submit" class="button">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Staff Login -->
+        <div class="section" id="staffSection">
+            <h3>Staff Login</h3>
+            <input type="password" id="staffPassword" placeholder="Enter password">
+            <button class="button" id="loginButton">Login</button>
+        </div>
+
+        <!-- Notification Test (hidden initially) -->
+        <div class="section" id="sendNotificationSection">
+            <button class="button" id="testNotificationButton">Send Test Notification</button>
+        </div>
     </div>
-</div>
 
-<div class="container">
+    <footer>
+        <p>&copy; 2025 Tea Time Alarm. All rights reserved.</p>
+    </footer>
 
-    <section class="section">
-        <h2>What is the Tea Time Alarm?</h2>
-        <p>The Tea Time Alarm is a mandatory daily reminder for all UK citizens to drink tea at the scheduled times: **10 AM, 3 PM, and 7 PM**. Failure to participate can result in **fines or even jail time**.</p>
-    </section>
-
-    <section class="section">
-        <h2>Legal Requirements</h2>
-        <p>It is a legal requirement to follow Tea Time rules. Failure to adhere to these regulations may result in legal consequences. This includes:</p>
-        <ul>
-            <li>Fines for non-compliance.</li>
-            <li>Possible jail time for repeated violations.</li>
-            <li>Additional penalties imposed by authorities.</li>
-        </ul>
-        <p>By accepting the Tea Time Pledge, you acknowledge and agree to comply with these legal requirements.</p>
-    </section>
-
-    <section class="section">
-        <h2>Fines and Penalties</h2>
-        <ul>
-            <li>First offense: **£50 fine**</li>
-            <li>Second offense: **£200 fine + mandatory tea education course**</li>
-            <li>Three offenses: **Possible jail time** (Up to **3 months**)</li>
-        </ul>
-    </section>
-
-    <section class="section">
-        <h2>Live Tea Counter</h2>
-        <p>Number of people currently drinking tea worldwide: <strong id="teaCounter">Loading...</strong></p>
-    </section>
-
-    <section class="section">
-        <h2>Take the Tea Pledge</h2>
-        <p>Do you promise to drink tea at the scheduled times?</p>
-        <button onclick="acceptPledge()">I Pledge to Drink Tea</button>
-        <p id="pledgeResponse"></p>
-    </section>
-
-    <section class="section">
-        <h2>Staff Login</h2>
-        <p>Only authorized personnel may access this panel.</p>
-        <input type="password" id="staffPassword" placeholder="Enter staff password">
-        <button onclick="staffLogin()">Login</button>
-        <div id="staffPanel" class="hidden-text">
-            <p>Welcome, Staff Member!</p>
-            <button onclick="sendTestNotification()">Send Test Notification</button>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq">
-            <h3>What happens if I miss tea time?</h3>
-            <p>If you miss tea time, you could face a fine or additional penalties. It’s important to stay on schedule!</p>
-
-            <h3>Can I drink other beverages instead of tea?</h3>
-            <p>No, the Tea Time law specifically mandates tea to be consumed during these hours.</p>
-
-            <h3>How do I know when the next tea time is?</h3>
-            <p>The countdown timer on this site will always show you the time remaining until the next tea time.</p>
-        </div>
-    </section>
-
-</div>
-
-<footer>
-    <p>Tea Time Alarm - A UK Government Initiative. All Rights Reserved.</p>
-</footer>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
