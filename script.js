@@ -43,6 +43,9 @@ function updateCountdown() {
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
         document.getElementById("countdown").innerText = `${hours}h ${minutes}m ${seconds}s`;
+
+        const progress = (timeLeft / (1000 * 60 * 60 * 24)) * 100;
+        document.getElementById("progress-bar-fill").style.width = `${progress}%`;
     } else {
         sendTeaNotification();
     }
@@ -62,6 +65,22 @@ function sendTeaNotification() {
 function updateTeaCounter() {
     const count = Math.floor(Math.random() * 1000000) + 500000;
     document.getElementById("teaCounter").innerText = count.toLocaleString();
+}
+
+// Tea History
+function updateTeaHistory() {
+    const history = [
+        { time: "10:00 AM", participated: true },
+        { time: "3:00 PM", participated: false },
+        { time: "7:00 PM", participated: true },
+    ];
+
+    const historyList = document.getElementById("teaHistory");
+    history.forEach(tea => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `Tea Time at ${tea.time}: ${tea.participated ? "Participated" : "Missed"}`;
+        historyList.appendChild(listItem);
+    });
 }
 
 // Accept the tea pledge
@@ -87,10 +106,4 @@ function sendTestNotification() {
             icon: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Tea_cup_icon.svg"
         });
     } else {
-        alert("Notifications are not enabled.");
-    }
-}
-
-// Run updates
-setInterval(updateCountdown, 1000); // Update countdown every second
-setInterval(updateTeaCounter, 5000); // Update tea counter every 5 seconds
+        alert("Notifications
