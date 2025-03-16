@@ -13,85 +13,49 @@
     Tea Time Alarm - Official UK Government Notification
 </header>
 
-<!-- Countdown Timer at the Top with Progress Bar -->
+<!-- Countdown Timer at the Top -->
 <div class="timer-container">
     <h2>Next Tea Time</h2>
     <div id="countdown" class="countdown"></div>
-    <div id="countdown-progress" class="progress-bar">
-        <div id="progress-bar-fill"></div>
+    <div id="progressBar" class="progress-bar">
+        <div id="progress" class="progress"></div>
     </div>
 </div>
 
 <div class="container">
 
+    <!-- FAQ Section -->
     <section class="section">
-        <h2>What is the Tea Time Alarm?</h2>
-        <p>The Tea Time Alarm is a mandatory daily reminder for all UK citizens to drink tea at the scheduled times: <strong>10 AM, 3 PM, and 7 PM</strong>. Failure to participate can result in <strong>fines or even jail time</strong>.</p>
-    </section>
-
-    <section class="section">
-        <h2>Fines and Penalties</h2>
-        <ul>
-            <li>First offense: <strong>£50 fine</strong></li>
-            <li>Second offense: <strong>£200 fine + mandatory tea education course</strong></li>
-            <li>Three offenses: <strong>Possible jail time</strong> (Up to <strong>3 months</strong>)</li>
-        </ul>
-    </section>
-
-    <section class="section">
-        <h2>Frequently Asked Questions (FAQ)</h2>
+        <h2>Frequently Asked Questions</h2>
         <div class="faq">
-            <h3>Why is Tea Time mandatory?</h3>
-            <p>Tea time is part of the cultural heritage of the UK, and it is mandatory to ensure that everyone participates for health and community bonding.</p>
+            <button class="faq-question" onclick="toggleFAQ(0)">What is the Tea Time Alarm?</button>
+            <div class="faq-answer" id="faq-answer-0">
+                <p>The Tea Time Alarm is a mandatory daily reminder for all UK citizens to drink tea at the scheduled times: 10 AM, 3 PM, and 7 PM. Failure to participate can result in fines or even jail time.</p>
+            </div>
 
-            <h3>What happens if I miss tea time?</h3>
-            <p>If you miss tea time, you may face fines or be required to attend a tea education course.</p>
+            <button class="faq-question" onclick="toggleFAQ(1)">What happens if I miss tea time?</button>
+            <div class="faq-answer" id="faq-answer-1">
+                <p>If you miss a tea time, penalties may apply. The first offense results in a £50 fine, the second offense in a £200 fine, and three offenses may lead to jail time.</p>
+            </div>
 
-            <h3>Can I opt out of the Tea Time Alarm?</h3>
-            <p>No, participation is mandatory for all citizens.</p>
+            <button class="faq-question" onclick="toggleFAQ(2)">How do I pledge to drink tea?</button>
+            <div class="faq-answer" id="faq-answer-2">
+                <p>Simply visit our website and accept the pledge to commit to drinking tea at the scheduled times.</p>
+            </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2>Live Tea Counter</h2>
-        <p>Number of people currently drinking tea worldwide: <strong id="teaCounter">Loading...</strong></p>
-    </section>
-
-    <section class="section">
-        <h2>Tea Time History</h2>
-        <p>Here's a record of your past tea times and whether you participated:</p>
-        <ul id="teaHistory">
-            <!-- Tea time history will be dynamically added here -->
-        </ul>
-    </section>
-
-    <section class="section">
-        <h2>Take the Tea Pledge</h2>
-        <p>Do you promise to drink tea at the scheduled times?</p>
-        <button class="button" onclick="acceptPledge()">I Pledge to Drink Tea</button>
-        <p id="pledgeResponse"></p>
-    </section>
-
+    <!-- Contact Us Section -->
     <section class="section">
         <h2>Contact Us</h2>
         <p>Have questions or feedback? Reach out to us.</p>
-        <form id="contactForm" onsubmit="sendContactForm(event)">
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" placeholder="Your Message" required></textarea>
+        <!-- Form that sends messages via Formspree -->
+        <form id="contactForm" action="https://formspree.io/f/mldjdnay" method="POST" class="contact-form">
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
             <button type="submit" class="button">Send Message</button>
         </form>
-        <p id="contactResponse"></p>
-    </section>
-
-    <section class="section">
-        <h2>Staff Login</h2>
-        <p>Only authorized personnel may access this panel.</p>
-        <input type="password" id="staffPassword" placeholder="Enter staff password">
-        <button class="button" onclick="staffLogin()">Login</button>
-        <div id="staffPanel" class="hidden-text">
-            <p>Welcome, Staff Member!</p>
-            <button class="button" onclick="sendTestNotification()">Send Test Notification</button>
-        </div>
+        <p id="contactResponse" class="response-message"></p>
     </section>
 
 </div>
