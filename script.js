@@ -42,6 +42,14 @@ function updateCountdown() {
         const totalTeaTime = new Date(nextTeaTime - now);
         const percentage = (timeLeft / totalTeaTime) * 100;
         document.getElementById("progress").style.width = `${percentage}%`;
+
+        // Update upcoming tea times list
+        updateTeaTimesList();
+
+        // Play Alarm when close to tea time
+        if (timeLeft < 60000) { // 1 minute before tea time
+            playAlarm();
+        }
     } else {
         sendTeaNotification();
     }
@@ -54,40 +62,18 @@ function updateTeaCounter() {
     document.getElementById("teaCounter").innerText = `Tea is being brewed... Total cups brewed: ${teaCounter}`;
 }
 
-// Pledge to Drink Tea
-document.getElementById("pledgeButton").addEventListener("click", function () {
-    document.getElementById("pledgeResponse").classList.remove("hidden-text");
-    document.getElementById("pledgeResponse").innerText = "Thank you for pledging to drink tea!";
-});
+// Tea Time Facts (Display a random fact each time the page loads)
+const teaFacts = [
+    "Tea is the second most consumed beverage in the world, after water.",
+    "The UK drinks 165 million cups of tea per day!",
+    "The earliest evidence of tea drinking dates back to 2737 BC in China.",
+    "In Britain, the average person drinks about 3 cups of tea per day.",
+    "Black tea is the most popular type of tea in the UK."
+];
 
-// FAQ Toggle
-function toggleFAQ(index) {
-    const answer = document.getElementById(`faq-answer-${index}`);
-    answer.style.display = answer.style.display === "none" ? "block" : "none";
+function displayRandomTeaFact() {
+    const fact = teaFacts[Math.floor(Math.random() * teaFacts.length)];
+    document.getElementById("teaFact").innerText = fact;
 }
 
-// Contact Form Submission Response
-document.getElementById("contactForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    document.getElementById("contactResponse").innerText = "Your message has been sent successfully!";
-});
-
-// Staff Login
-function staffLogin() {
-    const password = document.getElementById("staffPassword").value;
-    if (password === "admin123") {
-        document.getElementById("staffPanel").classList.remove("hidden-text");
-        alert("Staff Login Successful");
-    } else {
-        alert("Incorrect password. Please try again.");
-    }
-}
-
-// Send Test Notification (for staff only)
-function sendTestNotification() {
-    alert("Test notification sent to all users with notifications enabled.");
-}
-
-// Initialize countdown update every second
-setInterval(updateCountdown, 1000);
-setInterval(updateTeaCounter, 3000);  // Update every 3 seconds for live counter
+//
