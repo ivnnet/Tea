@@ -1,64 +1,29 @@
-function showAlert() {
-  alert("You have successfully registered to the Tea Time alarm from the UK Government");
-}
+function updateCountdown() {
+    const teaTimes = ["10:00", "15:00", "19:00"];
+    const now = new Date();
+    const currentHours = now.getHours();
+    const currentMinutes = now.getMinutes();
 
-// Request Notification Permission
-function requestNotificationPermission() {
-  Notification.requestPermission().then((permission) => {
-    if (permission === 'granted') {
-      console.log('Notification permission granted.');
-    } else {
-      alert('Please enable notifications to receive Tea Time reminders.');
-    }
-  });
-}
+    let nextTeaTime = null;
 
-// Schedule Notifications for Tea Times
-function scheduleTeaTimeNotifications() {
-  const teaTimes = [10, 15, 19];
-  const now = new Date();
-
-  teaTimes.forEach((hour) => {
-    const teaTime = new Date();
-    teaTime.setHours(hour, 0, 0, 0);
-
-    if (teaTime <= now) {
-      teaTime.setDate(teaTime.getDate() + 1); // Schedule for next day
+    for (let time of teaTimes) {
+        let [hours, minutes] = time.split(":").map(Number);
+        if (hours > currentHours || (hours === currentHours && minutes > currentMinutes)) {
+            nextTeaTime = new Date();
+            nextTeaTime.setHours(hours, minutes, 0, 0);
+            break;
+        }
     }
 
-    const timeUntilTeaTime = teaTime.getTime() - now.getTime();
+    if (!nextTeaTime) {
+        nextTeaTime = new Date();
+        nextTeaTime.setDate(nextTeaTime.getDate() + 1);
+        nextTeaTime.setHours(10, 0, 0, 0);
+    }
 
-    setTimeout(() => {
-      new Notification('Tea Time Reminder', {
-        body: 'It is time for your tea! Head to the kitchen now!',
-      });
-    }, timeUntilTeaTime);
-  });
+    const timeDiff = nextTeaTime - now;
+    document.getElementById("countdown").innerText = new Date(timeDiff).toISOString().substr(11, 8);
 }
 
-// Initialize Notifications on Page Load
-if (Notification.permission !== 'granted') {
-  requestNotificationPermission();
-}
-scheduleTeaTimeNotifications();
-
-// Staff Login and Test Notification
-document.getElementById('loginButton').onclick = function () {
-  const password = document.getElementById('staffPassword').value;
-  if (password === 'TeaTime123') { // Example password
-    document.getElementById('sendNotificationSection').style.display = 'block';
-    alert('Login successful. You can now send a test notification.');
-  } else {
-    alert('Incorrect password. Please try again.');
-  }
-};
-
-document.getElementById('testNotificationButton').onclick = function () {
-  if (Notification.permission === 'granted') {
-    new Notification('Test Notification', {
-      body: 'This is a test notification from the Tea Time Alarm system.',
-    });
-  } else {
-    alert('Please enable notifications to receive test notifications.');
-  }
-};
+setInterval(updateCountdown, 1000);
+updateCountdown();
