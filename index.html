@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,7 +36,13 @@
         <div class="section">
             <h3>Rules</h3>
             <p>All UK citizens must drink tea at 10 AM, 3 PM, and 7 PM daily. Failure to comply results in a £50 fine for the first offense, a £200 fine and a mandatory tea education course for the second offense, and up to 3 months in jail for the third offense. Notifications must be enabled, and participation is legally required.</p>
-            <button onclick="showAlert()">I agree</button>
+               <button onclick="showAlert()">I agree</button>
+
+    <script>
+        function showAlert() {
+            alert("You have successfully registered to the Tea Time alarm from the UK Government");
+        }
+    </script>
         </div>
 
         <!-- Q&A Section -->
@@ -52,15 +58,25 @@
             </div>
         </div>
 
-        <!-- Staff Login -->
+        <!-- Contact Form -->
         <div class="section">
+            <h3>Contact Us</h3>
+            <form action="https://formspree.io/f/mldjdnay" method="POST" id="contactForm">
+                <input type="email" name="email" placeholder="Your email" required><br><br>
+                <textarea name="message" rows="4" placeholder="Your message..." required></textarea><br><br>
+                <button type="submit" class="button">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Staff Login -->
+        <div class="section" id="staffSection">
             <h3>Staff Login</h3>
             <input type="password" id="staffPassword" placeholder="Enter password">
             <button class="button" id="loginButton">Login</button>
         </div>
 
         <!-- Notification Test (hidden initially) -->
-        <div class="section" id="sendNotificationSection" style="display: none;">
+        <div class="section" id="sendNotificationSection">
             <button class="button" id="testNotificationButton">Send Test Notification</button>
         </div>
     </div>
@@ -70,6 +86,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="notifications.js"></script>
 </body>
 </html>
