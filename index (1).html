@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea Time Alarm</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Tea Time Alarm UK GOV</h1>
+        <p>Government Tea Time Alarm</p>
+    </header>
+
+    <div class="container">
+        <!-- Countdown and Progress Bar -->
+        <div class="timer-container">
+            <h2>Next Tea Time</h2>
+            <div id="countdown" class="countdown"></div>  <!-- Countdown display -->
+            <div id="progressBar" class="progress-bar">
+                <div id="progress" class="progress"></div> <!-- Progress bar -->
+            </div>
+        </div>
+
+        <!-- Upcoming Tea Times -->
+        <div class="section">
+            <h3>Upcoming Tea Times:</h3>
+            <ul id="teaTimesList">
+                <li>10:00 AM</li>
+                <li>3:00 PM</li>
+                <li>7:00 PM</li>
+            </ul>
+        </div>
+
+        <!-- Tea Time Pledge -->
+        <div class="section">
+            <h3>Rules</h3>
+            <p>All UK citizens must drink tea at 10 AM, 3 PM, and 7 PM daily. Failure to comply results in a £50 fine for the first offense, a £200 fine and a mandatory tea education course for the second offense, and up to 3 months in jail for the third offense. Notifications must be enabled, and participation is legally required.</p>
+            <button onclick="showAlert()">I agree</button>
+        </div>
+
+        <!-- Q&A Section -->
+        <div class="section">
+            <h3>Frequently Asked Questions</h3>
+            <div class="qa">
+                <div class="question">What is Tea Time?</div>
+                <div class="answer">Tea Time is a cherished tradition where we take a break and enjoy a cup of tea.</div>
+            </div>
+            <div class="qa">
+                <div class="question">When is the next Tea Time?</div>
+                <div class="answer">Check the countdown above to know when the next Tea Time is!</div>
+            </div>
+        </div>
+
+        <!-- Staff Login -->
+        <div class="section">
+            <h3>Staff Login</h3>
+            <input type="password" id="staffPassword" placeholder="Enter password">
+            <button class="button" id="loginButton">Login</button>
+        </div>
+
+        <!-- Notification Test (hidden initially) -->
+        <div class="section" id="sendNotificationSection" style="display: none;">
+            <button class="button" id="testNotificationButton">Send Test Notification</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Tea Time Alarm. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="notifications.js"></script>
+</body>
+</html>

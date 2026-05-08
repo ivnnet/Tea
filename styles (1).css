@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.countdown {
+    font-size: 2rem;
+    font-weight: bold;
+    color: red;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #ddd;
+}
+
+.progress {
+    height: 20px;
+    background-color: green;
+    width: 0%;
+}
+
+button {
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
